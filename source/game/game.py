@@ -15,7 +15,8 @@ def show_info(info: str, y_pos=10, x_pos=10, font_size=30) -> None:
     """
 
     screen = pygame.display.get_surface()
-    font = pygame.font.Font(None, font_size)
+    font = pygame.font.SysFont("Arial", font_size)
+    font.bold = True
     info_text_surf = font.render(str(info), True, (255, 255, 255))
     info_text_rect = info_text_surf.get_rect(center=(x_pos, y_pos))
     screen.blit(info_text_surf, info_text_rect)
@@ -53,7 +54,7 @@ class Game:
                 deathSound.play()
                 self.deathSoundPlayed = True
 
-            show_info("YOU LOST HAHA =)))", x_pos=WIDTH / 2, y_pos=100, font_size=60)
+            show_info("YOU LOST HAHA =)))", x_pos=WIDTH / 2, y_pos=100, font_size=50)
 
             self.appleGroup.empty()
             self.snakeGroup.sprite.loseAnimation()
@@ -97,7 +98,7 @@ class Game:
     def showScore(self):
         """Shows the current score of the game"""
 
-        show_info(str(self.score), x_pos=16, y_pos=20, font_size=35)
+        show_info(str(self.score), x_pos=16, y_pos=20, font_size=25)
 
     def getPoints(self):
         """If the snake eats an apple"""
